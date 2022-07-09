@@ -4,9 +4,9 @@ const removeFromArray = function(inputArray, ...args) {
         if (args.includes(inputArray[i]))
         {
             inputArray.splice(i, 1);
+            i--;
         }
     }
-
     return inputArray;
 };
 
