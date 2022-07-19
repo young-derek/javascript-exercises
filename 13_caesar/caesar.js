@@ -1,12 +1,32 @@
-const caesar = function(inputString, inputNumber) {
+const caesar = function (inputString, inputNumber) {
     let array = inputString.split('');
-    let regex = /[A-Za-z]/;
+    let upperCaseLetter = /[A-Z]/;
+    let lowerCaseLetter = /[a-z]/;
+    let newCharacter = 0;
 
     array.forEach((element, index) => {
-        if (regex.test(element))
-        {
-            array[index] = String.fromCharCode(element.charCodeAt(0) 
-                    + (inputNumber % 26));
+        newCharacter = element.charCodeAt(0) + (inputNumber % 26);
+        if (upperCaseLetter.test(element)) {
+            if (newCharacter < 65) {
+                array[index] = String.fromCharCode(newCharacter + 26);
+            }
+            else if (newCharacter > 90) {
+                array[index] = String.fromCharCode(newCharacter - 26);
+            }
+            else {
+                array[index] = String.fromCharCode(newCharacter);
+            }
+        }
+        if (lowerCaseLetter.test(element)) {
+            if (newCharacter < 97) {
+                array[index] = String.fromCharCode(newCharacter + 26);
+            }
+            else if (newCharacter > 122) {
+                array[index] = String.fromCharCode(newCharacter - 26);
+            }
+            else {
+                array[index] = String.fromCharCode(newCharacter);
+            }
         }
     });
 
